@@ -1,0 +1,437 @@
+$main-color-card: linear-gradient(180deg, #5f27f8, #9573f3 40%, #fff 0, #fff);
+$game-color-card: linear-gradient(180deg, #520f0f, #c04949 40%, #fff 0, #fff);
+$main-color:linear-gradient(180deg, #5f27f8, #9573f3);
+$game-color:linear-gradient(180deg, #520f0f, #c04949);
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    font-size: 10px;
+}
+
+html {
+    background-image: url(../img/b.jpg);
+}
+
+body {
+    margin: 0 auto;
+    max-width: 128rem;
+}
+
+header {
+    z-index: 90;
+    position: sticky;
+    top: 0;
+    padding: 2rem 1rem 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    height: 8rem;
+    background: url(../img/b1.jpg);
+    background-position: center;
+}
+
+.game-color {
+    background-color: $game-color;
+}
+
+.switch-wrapper {
+    position: relative;
+}
+
+.switch {
+    right: 0;
+    display: block;
+    display: inline-block;
+    width: 120px;
+    height: 40px;
+    padding: 3px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: inset 0 -1px #fff, inset 0 1px 1px rgba(0, 0, 0, .05);
+    cursor: pointer;
+    background-image: linear-gradient(180deg, #eee, #fff 25px);
+    .switch-input {
+        position: absolute;
+        top: 0;
+    }
+}
+
+.switch-input {
+    left: 0;
+    opacity: 0;
+}
+
+.switch-label {
+    position: relative;
+    display: block;
+    height: inherit;
+    font-size: 18px;
+    line-height: 40px;
+    text-transform: uppercase;
+    background: $game-color;
+    border-radius: inherit;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .12), inset 0 0 2px rgba(0, 0, 0, .15);
+    transition: .15s ease-out;
+    &:before {
+        position: absolute;
+        top: 0;
+        transition: inherit;
+        content: attr(data-off);
+        right: 15px;
+        color: #fff;
+        text-shadow: 0 1px hsla(0, 0%, 100%, .5);
+    }
+    &:after {
+        position: absolute;
+        top: 0;
+        transition: inherit;
+        content: attr(data-on);
+        left: 15px;
+        color: #fff;
+        text-shadow: 0 1px rgba(0, 0, 0, .2);
+        opacity: 0;
+    }
+}
+
+.switch-input:checked~.switch-label {
+    background: $main-color;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, .15), inset 0 0 3px rgba(0, 0, 0, .2);
+    &:before {
+        opacity: 0;
+    }
+    &:after {
+        opacity: 1;
+    }
+}
+
+.switch-handle {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 33px;
+    height: 33px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, .2);
+    background-image: linear-gradient(180deg, #fff 40%, #f0f0f0);
+    transition: left .15s ease-out;
+    &:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -6px 0 0 -6px;
+        width: 12px;
+        height: 12px;
+        background: #f9f9f9;
+        border-radius: 20px;
+        box-shadow: inset 0 1px rgba(0, 0, 0, .02);
+        background-image: linear-gradient(180deg, #eee, #fff);
+    }
+}
+
+.switch-input:checked~.switch-handle {
+    left: 85px;
+    box-shadow: -1px 1px 5px rgba(0, 0, 0, .2);
+}
+
+.wrapper {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.main-card {
+    width: 30rem;
+    height: 28rem;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .16), 0 2px 10px 0 rgba(0, 0, 0, .12);
+    color: #212529;
+    display: flex;
+    flex-direction: column;
+    font-family: Roboto;
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 400;
+    text-align: center;
+    text-decoration: none;
+    background: $main-color-card;
+    margin: 2rem 1rem;
+    cursor: pointer;
+    transition: .3s;
+    img {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        border: 10px solid #fff;
+        object-fit: cover;
+        margin: 30px auto;
+    }
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, .4);
+    }
+}
+
+.game-color-card {
+    background: $game-color-card;
+}
+
+.card {
+    position: relative;
+    transform-style: preserve-3d;
+    display: flex;
+    justify-content: flex-end;
+    width: 30rem;
+    height: 25rem;
+    border: 0.1rem solid #ccc;
+    border-radius: 0.5rem;
+    margin: 2rem 1rem;
+    box-shadow: 0 1px 3px 0 #ccc;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .4);
+    transition: box-shadow .25s linear, transform .7s;
+    &:hover {
+        cursor: pointer;
+        box-shadow: -1px 5px 15px 0 rgba(0, 0, 0, .7);
+    }
+}
+
+.back,
+.front {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: .3s;
+}
+
+.back {
+    transform: rotateY(180deg);
+    .card-header {
+        background: #fff;
+        color: #000;
+    }
+}
+
+.rotate {
+    position: absolute;
+    width: 5rem;
+    height: 5rem;
+    background-image: url(../img/rotate.svg);
+    background-size: 3.2rem;
+    background-repeat: no-repeat;
+    background-position: center 1.6rem;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    transition: .3s;
+    filter: grayscale(1);
+    &:hover {
+        transform: scale(1.1);
+        filter: none;
+    }
+}
+
+.back,
+.front,
+.rotate {
+    backface-visibility: hidden;
+}
+
+.translate {
+    transform: rotateY(180deg);
+}
+
+.card-header {
+    margin-top: 20rem;
+    padding: 0 1, 5rem;
+    font-family: "Roboto";
+    font-size: 2.4rem;
+    line-height: 4, 5rem;
+    text-align: center;
+    width: 100%;
+    pointer-events: none;
+    background: #fff;
+    color: #212529;
+}
+
+.card-cover .back,
+.card-cover .front {
+    background-size: cover;
+    background-position: 50%;
+}
+
+.none {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.btn-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.btn {
+    padding: 1rem 2.5rem;
+    font-size: 24px;
+    margin: 2rem auto;
+    margin-bottom: 8rem;
+    width: 100%;
+    max-width: 30rem;
+    height: 5rem;
+    background: $game-color;
+    color: #fff;
+    border-radius: 10px;
+    outline: none;
+    border: none;
+    transition: .3s;
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+}
+
+.repeat {
+    width: 65px;
+    font-size: 0;
+    background-image: url(../img/repeat.svg), $game-color;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: 3.2rem 3.2rem, cover;
+    background-position: 50%;
+}
+
+.rating {
+    position: sticky;
+    z-index: 50;
+    top: 8rem;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin: 0 auto;
+    height: 4rem;
+    overflow-x: hidden;
+    line-height: 3.6rem;
+    font-size: 3.6rem;
+    color: #fc6262;
+    background-color: #520f0f;
+}
+
+.star-error,
+.trueStar {
+    flex-shrink: 0;
+    width: 4rem;
+    min-width: 4rem;
+    height: 4rem;
+    background-size: 4rem 4rem;
+}
+
+.trueStar {
+    background-image: url(../img/star-win.svg);
+}
+
+.star-error {
+    background-image: url(../img/star.svg);
+}
+
+.inactive {
+    opacity: 0.5;
+}
+
+.endGame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.gameHeader {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: #520f0f;
+}
+
+.endGamePicture {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    max-width: 128rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 2rem;
+    margin-top: 5rem;
+    background: url(../img/b1.jpg);
+    background-position: center;
+    .RS-logo {
+        margin: 1rem 0;
+        width: 10rem;
+    }
+    a {
+        text-decoration: none;
+        color: #000000;
+    }
+}
+
+@media (max-width: 1279px) {
+    main {
+        margin: 0 5%;
+    }
+}
+
+@media (max-width: 1069px) {
+    main {
+        margin: 0 15%;
+    }
+}
+
+@media (max-width: 999px) {
+    main {
+        margin: 0 10%;
+    }
+}
+
+@media (max-width: 799px) {
+    main {
+        margin: 0 5%;
+    }
+}
+
+@media (max-width: 719px) {
+    main {
+        max-width: 32rem;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 599px) {
+    header {
+        height: 14rem;
+    }
+    .rating {
+        top: 14rem;
+    }
+    .endGamePicture {
+        img {
+            width: 90%;
+        }
+    }
+}
